@@ -62,15 +62,20 @@ function getLeft() {
 // random random random------
 
 var random;
-
-function randomNumber() {
-  random = Math.floor(Math.random() * person.length);
-}
+var randomIndex;
 
 function surpriseMe() {
-  randomNumber();
+  random = Math.floor(Math.random() * person.length);
+
+  while (random == randomIndex) {
+    random = Math.floor(Math.random() * person.length);
+  }
+
+  randomIndex = random;
+
   personName.innerHTML = person[random].isim;
   jobTitle.innerHTML = person[random].job;
   reviewText.innerHTML = person[random].text;
   personImage.setAttribute("src", "images/" + person[random].imgFile);
+  console.log(random);
 }
